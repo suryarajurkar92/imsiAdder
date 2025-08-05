@@ -12,10 +12,10 @@ from tkinter import filedialog
 
 # Contact Technical Projects team for accessing Username and Password 
 # CSC Server Access
-hostname = "10.90.97.96"
-port = 12222
-username = "nokia"
-password = "Newsys123456!#"
+hostname = "Enter the host IP address"
+port = "Enter the respective port"
+username = "****"
+password = "****"
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())    # this saves as a known hostnames for the user
