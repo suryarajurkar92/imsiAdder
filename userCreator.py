@@ -12,17 +12,17 @@ from tkinter import filedialog
 
 # Contact Technical Projects team for accessing Username and Password 
 # CSC Server Access
-hostname = "IP address"
-port = 1111
-username = "****"
-password = "****"
+hostname = "10.90.97.96"
+port = 12222
+username = "nokia"
+password = "Newsys123456!#"
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())    # this saves as a known hostnames for the user
 
 # Select a IMSI data file
 input_data = tk.filedialog.askopenfilename(title="Select a IMSI data file")
-with open(input_data, 'r') as f:
+with open(input_data, 'r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     rows = list(reader)
     #print(rows)
@@ -36,11 +36,12 @@ try:
 
 
     for row in rows:
+        
         i = row['IMSI']
         p = row['Product']
 
         print(f"Curl Command Running for {i} with Product {p}")
-        curl = f"curl -k --include -X PUT 'https://****/jdms/v2/qos/sim/{i}/product/{p}'"   
+        curl = f"curl -k --include -X PUT 'https://10.90.6.153:2359/jdms/v2/qos/sim/{i}/product/{p}'"   
         
         stdin, stdout, stderr = client.exec_command(curl)
 
